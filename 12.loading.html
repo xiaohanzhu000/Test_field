@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>loading</title>
+<style>
+.loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis 2s infinite;
+    content: "\2026""\2026"; /* ascii code for the ellipsis character */
+}
+@keyframes ellipsis {
+    from {
+        width: 2px;
+    }
+    to {
+        width: 25px;
+    }
+}        
+
+
+</style>
+</head>
+
+<body>
+<p class="loading">....</p>
+</body>
+</html>

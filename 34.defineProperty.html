@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<script src="http://cdn.bootcss.com/eruda/1.3.0/eruda.min.js"></script> 
+<script>eruda.init();</script>
+  <style>
+
+	</style>
+</head>
+<body>
+	<button onClick="read()">read</button>
+	<button onClick="changeBtn()">change</button>
+
+</body>
+</html>
+<script>
+	
+let val = 'tom'
+let person = {}
+Object.defineProperty(person,'name',{
+    get(){
+        console.log('name属性被读取了...');
+        return val;
+    },
+    set(newVal){
+       
+        val = newVal;
+		 console.log('name属性被修改了...变成：'+newVal,val);
+    }
+})
+
+console.log(person)
+function changeBtn(){
+	person.name="Jack"
+	
+}
+	
+function read(){
+	person.name
+	
+}
+
+</script>

@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>ͨ</title>
+    <script type="text/javascript">
+        function readAsDataURL()
+        {
+            if(typeof FileReader=='undifined')          //�ж�������Ƿ�֧��filereader
+            {
+                result.innerHTML="<p>��Ǹ������������֧�� FileReader</p>";
+                return false;
+            }
+            var file=document.getElementById("imagefile").files[0];
+            if(!/image\/\w+/.test(file.type))           //�жϻ�ȡ���Ƿ�ΪͼƬ�ļ�
+            {
+                alert("��ȷ���ļ�Ϊͼ���ļ�");
+                return false;
+            }
+            var reader=new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload=function(e)
+            {
+                var result=document.getElementById("result");
+                result.innerHTML='<img src="'+this.result+'" alt=""/>'
+				return this.result
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+<p>
+    <label>��ѡ��һ���ļ���</label>
+    <input type="file" id="imagefile" />
+    <input type="button" value="��ȡͼ��" onClick="readAsDataURL();" />
+</p>
+<div name="result" id="result">
+    <!-- ����������ʾͼƬ���-->
+</div>
+</body>
+</html>

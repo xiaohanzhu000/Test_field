@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>TEST</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+
+    <style>
+        /* --- css start ---*/
+
+        body {
+            background: #d7d7d7;
+            /* 一个浅灰色的背景，这样可以和泡沫有一个好的视觉对比度 */
+            perspective:500px;
+            perspective-origin: 50% -20%;
+        }
+
+        .bubble {
+            width: 1200px;
+            /* 定义泡沫的宽高 */
+
+            height: 400px;
+            margin: 94px auto 50px auto;
+            position:relative;
+            transform-style:preserve-3d;
+            transform: rotateX(90deg);
+            border-radius:30px;
+           
+        }
+        .bubble:after {
+          z-index: 9999;
+          content: "";
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          box-shadow: inset -30px -30px 75px rgba(97 , 197 ,255,0.1),
+                /* 淡灰色渐变背景，光源位于左上方 */
+
+                inset 0px 0px 5px rgba(1 ,  106 ,209, 1),
+                /* 泡沫内部深灰色边界 */
+
+                inset 0px 0px 55px rgba(97 , 197 ,255, 1),
+                /* 泡沫内部白色渐变效果 */
+
+                inset -6px -6px 2px rgba(1 ,  106 ,209, 1),
+                /* 颜色稍深的右下边缘阴影效果 */
+
+                0 0 50px rgba(255, 255, 255, .75);
+            /* 泡沫周围的白色发光效果，以更好地突显边缘 */
+
+            border-radius:30px;
+
+          
+
+            position: absolute;
+            /* 使得伪元素可以据此绝对定位 */
+        }
+
+        /* --- css end ---*/
+    </style>
+</head>
+
+<body>
+    <!--HTML start-->
+    <div class="bubble"><img src="img/map1.png" width="1200px" height="400px" style="border-radius:30px"></div>
+
+    <!--HTML end-->
+</body>
+
+</html>
+
+<script>
+    (function () {
+
+    })()
+</script>

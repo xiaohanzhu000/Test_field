@@ -1,0 +1,17 @@
+<script src="js/moment.js"></script>
+<script>
+var endDate = new Date();
+//上个月最后一天
+console.log(moment(endDate.setDate(0)).format("YYYY-MM-DD"))
+//当月的最后一天
+var date= new Date(2019, 0, 31);
+date.setDate(28)
+date.setMonth(date.getMonth() + 1);
+//日期设置为0号, 0表示1号的前一天
+let lastDay = date.setDate(0);
+console.log('最后一天：' + new Date(lastDay).toLocaleString())
+console.log('最后一天：' + new Date(lastDay).toLocaleDateString())
+
+
+
+</script>

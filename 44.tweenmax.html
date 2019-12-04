@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>使用CSS轻松绘制三角形、梯形</title>
+    <style>
+        .wrap {
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        #div1 {
+            width: 200px;
+            height: 100px;
+            border: 1px solid red;
+            display: flex;
+
+        }
+
+        .list {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id='div1'>
+            <div class="list">1</div>
+            <div class="list">2</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src='js/TweenMax.js'></script>
+<script type="text/javascript">
+var tween = new TimelineLite()
+tween.to("#div1", 1, {
+  x: -100,
+}).set("#div1",{x:0,
+    onComplete:function(){
+       console.log('动画完成了');
+    }
+})
+</script>

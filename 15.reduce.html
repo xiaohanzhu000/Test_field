@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>reduce</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+
+(function(){
+//******************
+
+const userList = [
+  {
+    id: 1,
+    username: 'john',
+    sex: 1,
+    email: 'john@163.com'
+  },
+  {
+    id: 2,
+    username: 'jerry',
+    sex: 1,
+    email: 'jerry@163.com'
+  },
+  {
+    id: 3,
+    username: 'nancy',
+    sex: 0,
+    email: ''
+  }
+];
+
+function keyByUsernameReducer(acc, person) {
+    return {...acc, [person.id]: person};
+}
+const userObj = userList.reduce(keyByUsernameReducer, {});
+console.log(userObj);
+
+
+//******************
+})()
+</script>

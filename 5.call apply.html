@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>call&apply</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+    (function(){
+    //    var cat ={
+    //        name:"cat",
+    //        speak(say){
+    //            console.log(this.name+"say:"+say)
+    //        }
+    //    }
+    //   var dog={
+    //       name:"dog"
+    //   }
+      
+    //   cat.speak("miao");//catsay:miao
+    //   cat.speak.call(dog,"wang");//dogsay:wang
+
+    var age=18
+    var obj = {
+        name:"TOM",
+        ages:'16',
+        show:function(){
+           console.log(this.name+this.age) 
+        }
+    }
+    var aa={
+        name:"JO",
+        age:'18',
+    }
+    console.log(obj.name)
+    obj.show.call(aa)
+    })()
+</script>
+

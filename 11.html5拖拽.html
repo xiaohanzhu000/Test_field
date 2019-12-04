@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta charset="utf-8">
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+ 
+<style>
+.select-item {
+  background-color: #5bc0de;
+  display: inline-block;
+  text-align: center;
+  border-radius: 3px;
+  margin-right: 10px;
+  cursor:pointer;
+  padding: 6px 20px;
+  color: #fff;
+}
+ .cursored{
+  cursor: default;
+}
+.project-content,.people-content {
+    margin: 30px 50px;
+}
+.people-content {
+    margin-top: 30px;
+}
+.drag-div {
+    border: 1px solid #5bc0de;
+    padding:10px;
+    margin-bottom: 10px;
+    width: 800px;
+    cursor: pointer;
+}
+.select-project-item {
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+}
+.drag-people-label{
+  margin-bottom:0;
+  padding-right:10px;
+}
+[v-cloak]{
+    display:none;
+}
+</style>
+</head>
+<body>
+ 
+<div class='drag-content' id="dragCon" >
+  <div class='project-content'>
+    <div class='select-item' draggable='true' @dragstart='drag($event,index)' v-for="pjdt,index in projectdatas">{{pjdt.name}}</div>
+  </div>
+  <div class='people-content'>
+    <div class='drag-div' v-for="ppdt,index in peopledata" @drop='drop($event,index)' @dragover='allowDrop($event)'>
+           
+      <div class='select-project-item'>
+        <label class='drag-people-label'>{{ppdt.name}}:</label>
+        
+      </div>
+      
+    </div>
+  </div>
+  <div>
+      <ul>
+          <li  v-for="ppdt in peopledata">{{ppdt.name}}:<span v-for="p in ppdt.have">{{p}}/</span> </li>
+      </ul>
+  </div>
+</div>
+<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+<script type="text/javascript">
+    var dom;
+    var ss = new Vue({
+        'el':'#dragCon',
+        data:{
+            drogdata:'',
+            dragdata:'',
+            projectdatas:[{
+                id:1,
+                name:'葡萄'
+              },{
+                id:2,
+                name:'芒果'
+              },{
+                id:3,
+                name:'木瓜'
+              },{
+                id:4,
+                name:'榴莲'
+              }],
+ 
+ 
+               peopledata:[{
+                id:1,
+                name:'小颖',
+                have:[]
+              },{
+                id:2,
+                name:'hover',
+                have:[]
+              },{
+                id:3,
+                name:'空巢青年三 ',
+                have:[]
+              },{
+                id:3,
+                name:'一丢丢',
+                have:[]
+              }]
+ 
+        },
+       
+ 
+        methods: {
+            drag:function(event,index){
+               dom = event.currentTarget;
+               dragdata=event.dataTransfer.setData("Text",index);
+               
+               //console.log(dom)
+            },
+            drop:function(event,index){
+              event.preventDefault();
+              drogdata= event.dataTransfer.getData("text");
+              //console.log(dom)
+              var item =dom.cloneNode(true);
+              item.draggable=false;
+              console.log(item)
+              event.currentTarget.appendChild(item);
+              this.peopledata[index].have.push(this.projectdatas[drogdata].name);
+            },
+            allowDrop:function(event){
+              event.preventDefault();
+            }
+          }
+ 
+    });
+ 
+ 
+</script>
+</body>
+</html>

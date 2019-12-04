@@ -1,0 +1,11 @@
+<script>
+  //作用，把函数实际参数转成数组
+  function aa(a,b){
+    console.log(arguments)
+    console.log( Array.prototype.slice.call(arguments))
+    console.log(Array.from(arguments))
+    console.log([...arguments])
+  }
+  aa(1,2)
+  </script>
+  

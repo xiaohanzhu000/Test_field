@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+      <div class="bigBox">
+          <div class="list1">
+              <p style="height:800px;width: 200%">
+                默认样式
+              </p>
+          </div>
+          <div class="list2">
+                <p style="height:800px;width: 200%">
+                内容2<br>
+                </p>
+          </div>
+          <div class="list3">
+                <p style="height:800px;width: 200%">
+                内容3<br>
+                </p>
+          </div>
+          <div class="list4">
+                <p style="height:800px;width: 200%">
+                内容4<br>
+                </p>
+          </div>
+      </div>
+</body>
+<script>
+    
+</script>
+<style>
+body,html{
+    background: linear-gradient(left,#03a9f4, #f71ab95e); /* 标准的语法 */
+    background: -webkit-linear-gradient(left,#03a9f4, #f71ab95e); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(left,#03a9f4, #f71ab95e); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(left,#03a9f4, #f71ab95e); /* Firefox 3.6 - 15 */
+}
+    /* 
+    ::-webkit-scrollbar    //滚动条整体部分
+    ::-webkit-scrollbar-button   //滚动条两端的按钮
+    ::-webkit-scrollbar-track   // 外层轨道
+    ::-webkit-scrollbar-track-piece    //内层轨道，滚动条中间部分（除去）
+    ::-webkit-scrollbar-thumb //滚动条里面可以拖动的那个
+    ::-webkit-scrollbar-corner   //边角
+    ::-webkit-resizer   ///定义右下角拖动块的样式
+ */
+.bigBox{
+    width: 100%;
+    background: green;
+}
+.bigBox div{
+    width: 10%;
+    float: left;
+    height: 500px;
+    margin-left:12%;
+    overflow-y: scroll;
+}
+.bigBox .list1{
+    background: pink
+}
+
+
+.bigBox .list2{
+    background: red
+}
+.list2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #000000;
+}
+.list2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFFFFF;
+    border-radius: 0;
+}
+.list2::-webkit-scrollbar-button{
+    background: green;
+    width: 12px;
+    height: 20px;
+    color: green;
+    content: "▲";
+}
+.list2::-webkit-resizer{
+    background: orange;
+}
+
+.list3{
+    background: #4F9D9D;
+}
+.list3::-webkit-resizer{border-radius:.3125rem;background-color:#2f4056}
+.list3::-webkit-scrollbar{width:12px;height:12px}
+.list3::-webkit-scrollbar-thumb{border-radius:5px;background-color:#0073aa;background-image:-webkit-linear-gradient(45deg,hsla(0,0%,100%,.4) 25%,transparent 25%,transparent 50%,hsla(0,0%,100%,.4) 50%,hsla(0,0%,100%,.4) 75%,transparent 75%,transparent)}
+
+.list4{
+    background: 	#E800E8;
+}
+.list4::-webkit-scrollbar{
+    width:12px;
+    height:12px
+    }
+.list4::-webkit-scrollbar-thumb{
+    width:12px;
+    background: linear-gradient(top,#00EC00,#424200);
+    background: -webkit-linear-gradient(top,#00EC00,#424200);
+    background: -moz-linear-gradient(top,#00EC00,#424200);
+    background: -o-linear-gradient(top,#00EC00,#424200);
+    border-radius: 5px;
+}
+
+</style>
+</html>

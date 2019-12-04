@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DOMtoString</title>
+</head>
+
+<body>
+<div id="a">
+<ul>
+<li>1</li>
+<li>2</li>
+</ul>
+<br />
+<div class="b">
+<article>hello world</article>
+</div>
+
+</div>
+</body>
+</html>
+<script>
+(function(){
+//---------------	
+	
+function domToString (node) {  
+     let tmpNode = document.createElement('div')
+     tmpNode.appendChild(node) 
+     let str = tmpNode.innerHTML
+     tmpNode = node = null; // 解除引用，以便于垃圾回收  
+     return str;  
+}  
+
+var a = document.getElementById("a")
+console.log(domToString (a))
+	
+	
+	
+//----------------	
+})()
+</script>

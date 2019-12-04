@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .wrap {
+            margin:0 auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        #div1 {
+            width: 200px;
+            height: 100px;
+            border: 1px solid red;
+            display: flex;
+
+        }
+        .list{
+            width:100px;
+            height:100px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id='div1'>
+            <div class="list">1</div>
+            <div class="list">2</div>
+        </div>
+    </div>
+
+    <!--移入tween.js-->
+    <script src='js/tween.js'></script>
+    <!-- <script src='js/tweenjs-NEXT.js'></script> -->
+    <script type="text/javascript">
+  // var box = document.createElement('div');
+        // box.style.setProperty('background-color', '#008800');
+        // box.style.setProperty('width', '100px');
+        // box.style.setProperty('height', '100px');
+        // document.body.appendChild(box);
+        var box = document.querySelector("#div1")
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+        function start(fn) {
+            var coords = { x: 0, y: 0 };
+            var tween = new TWEEN.Tween(coords)
+                .to({ x: -100 }, 1000)
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .onUpdate(function () {
+                    box.style.setProperty('transform', 'translate(' + coords.x + 'px, ' + coords.y + 'px)');
+                })
+                .start();
+               
+        }
+        start()
+       
+
+    </script>
+</body>
+
+</html>

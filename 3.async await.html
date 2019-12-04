@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>async/await</title>
+</head>
+
+<body>
+</body>
+<script>
+function getSomething(){
+	return "someThing"
+}
+async function testAsync(){
+	return "HELLO";
+}
+
+async function test(){
+	let v1 = await getSomething();
+	let v2 = await testAsync();
+	console.log(v1,v2)
+}
+
+test()
+
+</script>
+</html>

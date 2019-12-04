@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>对象</title>
+    <meta charset="utf-8" />
+    
+</head>
+<body>
+
+
+
+<script>
+
+class Singer{
+   constructor({name,id,mid}){
+    this.id = id
+    this.name = name
+    this.mid = mid
+    this.avatar = `https://y.gtimg.cn/music/photo_new/T001R300x300M000${mid}.jpg?max_age=2592000`
+	//return this
+   }
+   init(){
+	   console.log("112")
+   }
+}
+
+
+	
+var kkk= new Singer("tom",23,1)
+console.log(kkk)
+	kkk.init()
+	
+	
+//	
+//var i = []
+//
+//i.push(new Singer({
+//  name:2,
+//  id:1,
+//  mid:"wlom2"
+//
+//}))
+//
+//
+//class Demo {
+//    constructor(a, b) {
+//        this.a = a;
+//        this.b = b;
+//        return this;
+//    }
+//
+//    print() {
+//        console.log(this.a + ' ' + this.b);
+//    }
+//}
+//const demo = new Demo('hello', 'world');
+//console.log(demo.prototype)
+
+
+</script>
+	
+	
+	
+</body>
+</html>

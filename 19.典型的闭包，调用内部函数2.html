@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>典型的闭包，调用内部函数</title>
+</head>
+
+<body>
+</body>
+	<script>
+	var main = (function(){
+		
+		function a(a){
+			return console.log(a);
+		}
+		function b(b){
+			return console.log(b);
+		}
+		function c(c){
+			return console.log(c);
+		}
+		return {a,b,c};
+	})()
+	
+	main.b(123);
+	
+	</script>
+</html>

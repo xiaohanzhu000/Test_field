@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打印预览 PRINT_PREVIEW</title>
+	<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css">
+	<style>
+		.content{
+			display:flex;
+		}
+	</style>
+</head>
+<body>
+<div class="content">
+	<div>
+		<div>HTML:</div>
+		<textarea rows="45" cols="80" id="html"></textarea>
+	</div>
+	<div style="margin-left:20px;">
+		<div>CSS:</div>
+		<textarea rows="45" cols="80" id="css"></textarea>
+	</div>
+</div>
+
+<button id="btn">PRINT_PREVIEW</button>   <button id="clear">CLEAR</button>
+</body>
+
+<script type="text/javascript">   
+var _html = document.getElementById("html")
+var _css  = document.getElementById("css")
+var _btn  = document.getElementById("btn")
+var _clear = document.getElementById("clear")
+
+//初始数据
+function init(){
+	if(localStorage.getItem("html")){	
+		_html.value=localStorage.getItem("html")
+	}
+	if(localStorage.getItem("css")){	
+		_css.value=localStorage.getItem("css")
+	}
+}
+init()
+
+//保存数据
+_html.addEventListener("change",function(){
+	localStorage.setItem("html", _html.value);
+})
+_css.addEventListener("change",function(){
+	localStorage.setItem("css", _css.value);
+})
+
+//清除数据
+_clear.addEventListener("click",function(){
+	_html.value=""
+	_css.value=""
+	localStorage.removeItem("html")
+	localStorage.removeItem("css")
+})
+	
+//打印预览
+_btn.addEventListener("click",function(){
+	var pri_div = document.createElement("div")
+	pri_div.id="priDIv"
+	pri_div.innerHTML=_html.value
+    document.body.appendChild(pri_div)
+	printJS({ 
+		printable: 'priDIv', 
+		type: 'html', 
+		style:`${_css.value}`
+	})
+	document.body.removeChild(pri_div)
+})
+
+</script>
+
+<style>
+
+</style>
+</html>

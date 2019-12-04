@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>TEST</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+
+    <style>
+        /* --- css start ---*/
+        html,
+        body {
+            height: 100%;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #000;
+        }
+
+        /* --- css end ---*/
+    </style>
+</head>
+
+<body>
+    <!--HTML start-->
+    <div id="map"></div>
+    <!--HTML end-->
+</body>
+
+</html>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=HHcH4c1ZU9RcrF4gTUPRK3t8QWgGSBW6"></script>
+<script>
+    (function () {
+        /* --- js start ---*/
+        var map;
+        createMap()
+
+        function createMap() {
+            map = new BMap.Map('map');
+            map.centerAndZoom(new BMap.Point(106.714476, 26.60403), 8);
+            // 将地图在水平位置上移动x像素，垂直位置上移动y像素(x,y)
+            map.panBy(-210, 330);
+            var top_left_control = new BMap.ScaleControl({
+                anchor: BMAP_ANCHOR_TOP_LEFT
+            }); // 左上角，添加比例尺
+            var top_left_navigation = new BMap.NavigationControl(); //左上角，添加默认缩放平移控件
+            var top_right_navigation = new BMap.NavigationControl({
+                anchor: BMAP_ANCHOR_TOP_RIGHT,
+                type: BMAP_NAVIGATION_CONTROL_SMALL
+            }); //右上角，仅包含平移和缩放按钮
+
+            map.addEventListener("click",e=>{
+                console.log(e.target.pe.lng,e.target.pe.lat)
+            })
+
+            map.addControl(top_left_control);
+            map.addControl(top_left_navigation);
+            map.addControl(top_right_navigation);
+            getBoundary();
+        }
+        
+
+
+
+
+        function getBoundary() {
+            map.clearOverlays(); // 清除地图的其余覆盖物
+            const bdary = new BMap.Boundary();
+            bdary.get('贵州省', (rs) => {
+
+                const count = rs.boundaries.length;
+                if (count === 0) {
+                    return;
+                }
+                const EN_JW = '180, 90;';
+                const NW_JW = '-180,  90;';
+                const WS_JW = '-180, -90;';
+                const SE_JW = '180, -90;';
+                // 东南西北四个角添加一个覆盖物
+                const ply1 = new BMap.Polygon(rs.boundaries[0] + SE_JW + SE_JW + WS_JW + NW_JW + EN_JW +
+                    SE_JW, {
+                        strokeColor: 'none',
+                        fillColor: "#333333",
+                        fillOpacity: 1,
+                        strokeOpacity: 1
+                    });
+                map.addOverlay(ply1);
+                // 绘制‘贵州省’整体的外轮廓
+                for (let i = 0; i < count; i++) {
+                    const ply = new BMap.Polygon(rs.boundaries[i], {
+                        strokeWeight: 0.5,
+                        strokeColor: 'transparent',
+                        fillColor: "#7F97A6"
+                    });
+                    map.addOverlay(ply);
+                }
+                getRegion();
+            });
+        }
+
+        var dataArr = [{
+                "name": '安顺市',
+                "cp": [105.9082, 25.9882]
+            },
+            {
+                "name": "贵阳市",
+                "cp": [106.6992, 26.7682]
+            }
+        ];
+
+        function getRegion() {
+            dataArr.forEach(element => {
+                var bdary = new BMap.Boundary();
+                bdary.get(element['name'], rs => {
+                    var count = rs.boundaries.length;
+                    for (let i = 0; i < count; i++) {
+                        var ply = new BMap.Polygon(rs.boundaries[i], {
+                            strokeWeight: 0.5,
+                            strokeColor: '#fff',
+                            fillOpacity: 0.6,
+                            fillColor: '#a9dbf7'
+                        });
+                        map.addOverlay(ply);
+                    }
+                    citySetLabel(new BMap.Point(element['cp'][0], element['cp'][1]), element[
+                        'name']);
+                });
+            });
+        }
+
+        function citySetLabel(cityCenter, cityName) {
+            var label = new BMap.Label(cityName, {
+                offset: new BMap.Size(-20, -10),
+                position: cityCenter
+            });
+            label.setStyle({
+                border: 'none',
+                background: 'transparent',
+                'font-size': '0.25rem',
+                color: '#fff',
+            });
+            map.addOverlay(label);
+        }
+
+
+        /* --- js end ---*/
+    })()
+</script>

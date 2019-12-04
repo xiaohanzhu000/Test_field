@@ -1,0 +1,56 @@
+<HTML> 
+<HEAD> 
+<META http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+<TITLE>无标题文档</title> 
+</HEAD> 
+<BODY> 
+<IMG id="imgId" style="visibility:visible " src="https://p.ssl.qhimg.com/dm/48_48_100/t018a13531680c6d52d.jpg"> 
+<span id="pid" style="visibility:visible " >:</span>
+<SCRIPT language="javascript">
+
+function showImg() 
+{ 
+    if(pid.style.visibility == "visible")    
+//如果可见，则隐藏
+        pid.style.visibility = "hidden"; 
+    else 
+        pid.style.visibility = "visible";    
+//设置图像可见
+    setTimeout('showImg()',300);               
+//间隔的毫秒
+}
+showImg()
+console.log(formatdate(new Date(),"yyyy-MM-dd HH:mm"))
+
+
+function formatdate(time, format){
+          var t = new Date(time);
+          var tf = function(i){return (i < 10 ? '0' : '') + i};
+          return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){
+              switch(a){
+                  case 'yyyy':
+                      return tf(t.getFullYear());
+                      break;
+                  case 'MM':
+                      return tf(t.getMonth() + 1);
+                      break;
+                  case 'mm':
+                      return tf(t.getMinutes());
+                      break;
+                  case 'dd':
+                      return tf(t.getDate());
+                      break;
+                  case 'HH':
+                      return tf(t.getHours());
+                      break;
+                  case 'ss':
+                      return tf(t.getSeconds());
+                      break;
+              }
+          })
+    }
+ 
+</SCRIPT> 
+</BODY> 
+</HTML>
+

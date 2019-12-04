@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>对象</title>
+    <meta charset="utf-8" />
+    
+</head>
+<style>
+	div {
+  position: relative;
+  display: inline-block;
+}
+	input {
+  outline: none;
+  border: none;
+  background: #fafafa;
+}
+	input ~ span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #262626;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.3s ease-in-out;
+}
+
+input:focus ~ span {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+
+</style>
+<body>
+
+
+<div>
+  <input type="text" placeholder="enter"/>
+  <span></span>
+</div>
+	
+	
+	
+</body>
+</html>

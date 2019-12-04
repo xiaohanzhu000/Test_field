@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<style>
+.can{
+	background:url(img/test.jpg) 50%; width: 700px; height: 500px;
+}
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" >
+    <title>html2canvas example</title>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+</head>
+<script type="text/javascript">
+function takeScreenshot() {
+  console.log('test');
+  html2canvas(document.getElementById('view')).then(canvas => {
+    document.getElementById("addpic").appendChild(canvas)
+    console.log(canvas)
+});
+
+}
+</script>
+<body>
+    <div id="view" class="can">
+        <input type="button" value="截图" onclick="takeScreenshot()">
+    </div >
+    <div id="addpic">
+    </div>
+</body>
+
+</html>

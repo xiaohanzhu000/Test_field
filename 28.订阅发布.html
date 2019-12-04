@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css">
+<title>订阅发布</title>
+</head>
+
+<body>
+<div id="myElementId">
+  订阅发布
+</div>
+</body>
+</html>
+<script>
+var Site = {};
+
+Site.userList = {};
+
+Site.subscribe = function(key, fn) {
+
+    if (!this.userList[key]) {
+
+        this.userList[key] = [];
+
+    }
+
+    this.userList[key].push(fn);
+
+}
+
+Site.publish = function() {
+
+    var key = Array.prototype.shift.apply(arguments),
+
+    fns = this.userList[key];
+
+    if (!fns || fns.length === 0) {
+
+        console.log('没有人订阅' + key + "这个分类的文章");
+
+        return false;
+
+    }
+
+    for (var i = 0,
+    len = fns.length; i < len; i++) {
+
+        fns[i].apply(this, arguments);
+
+    }
+
+}
+
+Site.subscribe("javascript",
+function(title) {
+
+    console.log(title);
+
+});
+
+Site.subscribe("es6",
+function(title) {
+
+    console.log(title);
+
+});
+
+Site.publish("javascript", "[js高手之路]寄生组合式继承的优势");
+
+Site.publish("es6", "[js高手之路]es6系列教程 - var, let, const详解");
+
+Site.publish("html5", "html5新的语义化标签");
+</script>

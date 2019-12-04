@@ -1,0 +1,9 @@
+<script>
+var obj = {
+    a: 1
+};
+var safeKey = Symbol("know");
+console.log(safeKey);//Symbol(know)
+obj[safeKey] = 'value';
+console.log(obj[safeKey]);  // value
+</script>
